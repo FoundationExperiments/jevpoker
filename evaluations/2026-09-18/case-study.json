@@ -1,0 +1,27 @@
+{
+  "kind": "post-hoc illustrative error; not an independent performance sample",
+  "groupId": "hu-random-8",
+  "seat": 0,
+  "hole": [
+    "9s",
+    "8h"
+  ],
+  "board": [
+    "3c",
+    "Td",
+    "2s"
+  ],
+  "callBB": 98,
+  "potBB": 102,
+  "breakEvenEquity": 0.49,
+  "samples": 200000,
+  "simulationSeed": 81920918,
+  "equity": 0.303915,
+  "equityMonteCarloCI95": [
+    0.30191924655263674,
+    0.30591075344736324
+  ],
+  "callEVRelativeToFoldBB": -37.217000000000006,
+  "modelAction": "call",
+  "rationale": "Against this known random-action baseline, actions do not depend on hole cards. Opponent range remains uniformly random. Equity uses hero hole cards and flop only; recorded opponent cards and actual turn/river are not used. Sampling interval describes simulation noise, not uncertainty about a human opponent range."
+}

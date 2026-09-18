@@ -44,7 +44,7 @@ TYPESAFE_BASE_URL=https://api.typesafe.ai
 
 密钥只由服务端读取，`.dev.vars` 已被 Git 忽略，不使用 `NEXT_PUBLIC_` / `VITE_` 密钥变量，不会返回给网页。
 
-**未提供有效 key 的当前交付状态：官方 HTTP 协议已经实现，并通过模拟传输测试；未进行真实 Jev 推理调用。** 本地练习可以立即玩，但它不是 Jev。真实 API 调用可能消耗账号额度。
+**已使用本地配置的真实 API key 完成 Jev 调用和对战评测。** 评测固定版本为 `jev-1.13.0`，详情见 [2026-09-18 评测报告](evaluations/2026-09-18/REPORT.md)。本地练习算法不是 Jev；真实 API 调用可能消耗账号额度。
 
 官方来源：[Quick Start](https://docs.typesafe.ai/introduction/quickstart)、[TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js)。当前适配器按文档使用 `POST /v1/systemone`、Bearer 认证、`model: jev-latest`、`choice` 问题与 `answers.poker_action`。
 
@@ -76,6 +76,21 @@ node scripts/http-smoke.mjs
 
 测试覆盖所有牌型、A2345、小盲/大盲行动顺序、非法操作、全下边池、未跟注筹码返还、平分零头、短码与累计短码重新开注、隐藏信息、多个桌面人数的随机牌局筹码守恒、Jev 协议与失败暂停、会话隔离和并发重复请求。
 
-尚未使用真实 key 测试 Jev 权限、推理延迟或打牌水平；模型表现不是扑克求解器质量保证。测试当前采用引擎、协议和 HTTP 级验证，未进行自动浏览器交互测试。
+真实 API 权限、延迟和打牌水平已经评测，结论与限制见下方报告。测试当前采用引擎、协议和 HTTP 级验证，未进行自动浏览器交互测试。
 
 `npm run lint` 检查项目维护的 app、lib、tests、scripts 和配置文件；未修改的生成式 UI 组件保留上游代码。
+
+## 真实模型评测
+
+[评测报告](evaluations/2026-09-18/REPORT.md) 包含交换座位的单挑、六人桌、区间估计、基础诊断与失误案例。当前接入存在明确的基础错误，不能把它的建议当作专业策略。
+
+```bash
+# 真实 API，小样本试跑；密钥读取 .dev.vars
+npm run evaluate -- --phase pilot --out outputs/my-pilot
+# 完整计划：720 手及 24 次诊断调用
+npm run evaluate -- --phase main --out outputs/my-main
+# 离线审计，不消耗 API
+npm run evaluate:audit -- outputs/my-main
+```
+
+每次使用新的输出目录。运行会保存无认证头的请求体、响应、发牌、动作与源码快照；完整原始输出仅保存在本地被 Git 忽略的 `outputs/`。汇总结果随报告提交。

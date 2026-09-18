@@ -12,7 +12,9 @@
     "lint": "oxlint app lib tests scripts next.config.ts vite.config.ts",
     "format": "oxfmt",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "evaluate": "node scripts/evaluate.mjs",
+    "evaluate:audit": "node scripts/audit-evaluation.mjs"
   },
   "dependencies": {
     "react": "19.2.6",

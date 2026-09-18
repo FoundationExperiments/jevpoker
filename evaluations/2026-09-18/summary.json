@@ -1,0 +1,661 @@
+{
+  "manifest": {
+    "startedAt": "2026-09-18T21:56:02.027Z",
+    "plan": {
+      "phase": "main",
+      "model": "jev-1.13.0",
+      "seed": 20260918,
+      "headsUpPairsPerBaseline": 100,
+      "sixSeatDecks": 20,
+      "diagnosticRepeats": 3,
+      "concurrency": 3,
+      "maximumCalls": 4000,
+      "maximumInputTokens": 5000000,
+      "startingStackBB": 100,
+      "blinds": [
+        10,
+        20
+      ],
+      "retryLimit": 1,
+      "perRequestTimeoutMs": 20000
+    },
+    "sourceCommit": "9b1dbf3cb721e13d34cb1c182744cbde7c2e3cd0",
+    "sourceHashes": {
+      "engine": "5fb777faec3825ee06c8ac5446782b59c8a5f9e66921a2374398303679a0f79f",
+      "decisionAdapter": "113d2668eac62f490a5b7ea7058e878ca31e31955e20a163d5d0d6bdac3a3373",
+      "harness": "bcbc6f18cfbc3b93d12c723fcdfc5b58152d41664a983fbcccc5071f59e43e04",
+      "evaluationLib": "c9e4ed570192b1d0f29dcf598e7c9922612674b50396d01d630eb901970b7243"
+    },
+    "design": "Each hand resets to 100bb, no rake. HU: identical deck used twice, Jev and baseline swap seats. Six-max: one Jev vs five MC56, same deck repeated with Jev in every seat. Public seat names neutralized; production instructions/action mapping unchanged. Per-deck cluster bootstrap. Argmax choice, no mixing probabilities. Fixed sample plan, no outcome-based stopping."
+  },
+  "finishedAt": "2026-09-18T22:04:46.565Z",
+  "conditions": [
+    {
+      "condition": "hu_random",
+      "clusters": 94,
+      "hands": 188,
+      "excludedGroups": 6,
+      "bbPer100": 242.81914893617022,
+      "ci95": [
+        -375,
+        881.3829787234042
+      ],
+      "totalNetBB": 456.5,
+      "profitableHands": 71,
+      "losingHands": 117,
+      "decisionCount": 600,
+      "freeCheckOpportunities": 155,
+      "freeFolds": 0,
+      "aggressiveActions": 57,
+      "foldActions": 77,
+      "preflopVPIP": 0.6808510638297872
+    },
+    {
+      "condition": "hu_calling",
+      "clusters": 100,
+      "hands": 200,
+      "excludedGroups": 0,
+      "bbPer100": -56.5,
+      "ci95": [
+        -314,
+        191
+      ],
+      "totalNetBB": -113,
+      "profitableHands": 85,
+      "losingHands": 115,
+      "decisionCount": 702,
+      "freeCheckOpportunities": 602,
+      "freeFolds": 0,
+      "aggressiveActions": 104,
+      "foldActions": 32,
+      "preflopVPIP": 0.58
+    },
+    {
+      "condition": "hu_mc56",
+      "clusters": 100,
+      "hands": 200,
+      "excludedGroups": 0,
+      "bbPer100": -369.25,
+      "ci95": [
+        -677.25,
+        -94.25
+      ],
+      "totalNetBB": -738.5,
+      "profitableHands": 83,
+      "losingHands": 117,
+      "decisionCount": 744,
+      "freeCheckOpportunities": 535,
+      "freeFolds": 1,
+      "aggressiveActions": 101,
+      "foldActions": 43,
+      "preflopVPIP": 0.595
+    },
+    {
+      "condition": "six_mc56",
+      "clusters": 20,
+      "hands": 120,
+      "excludedGroups": 0,
+      "bbPer100": -280.54166666666674,
+      "ci95": [
+        -754.2083333333331,
+        186.25000000000006
+      ],
+      "totalNetBB": -336.65,
+      "profitableHands": 30,
+      "losingHands": 49,
+      "decisionCount": 359,
+      "freeCheckOpportunities": 182,
+      "freeFolds": 0,
+      "aggressiveActions": 36,
+      "foldActions": 52,
+      "preflopVPIP": 0.5083333333333333
+    }
+  ],
+  "api": {
+    "calls": 2455,
+    "successful": 2443,
+    "failed": 12,
+    "inputTokens": 2252532,
+    "outputTokens": 153239,
+    "estimatedInputCostUSD": 0.094606344,
+    "costBasis": "Official displayed input price $42 / billion tokens; not an invoice.",
+    "latencyMs": {
+      "p50": 207,
+      "p95": 580,
+      "mean": 262.1936144085141
+    },
+    "models": [
+      "jev-1.13.0"
+    ]
+  },
+  "diagnostics": [
+    {
+      "id": "royal",
+      "title": "皇家同花顺面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 184,
+        "confidence": 0.34,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "royal",
+      "title": "皇家同花顺面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 231,
+        "confidence": 0.24,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "royal",
+      "title": "皇家同花顺面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 244,
+        "confidence": 0.33,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_aces",
+      "title": "四条 A 面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 207,
+        "confidence": 0.85,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_aces",
+      "title": "四条 A 面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 224,
+        "confidence": 0.81,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_aces",
+      "title": "四条 A 面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "唯一最大牌，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 144,
+        "confidence": 0.85,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_nines",
+      "title": "四条 9 面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面不可能有更大四条或同花顺，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 95,
+        "confidence": 0.6,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_nines",
+      "title": "四条 9 面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面不可能有更大四条或同花顺，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 216,
+        "confidence": 0.66,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "quads_nines",
+      "title": "四条 9 面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面不可能有更大四条或同花顺，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 214,
+        "confidence": 0.63,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "nut_flush",
+      "title": "无对牌面的最大同花面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面无更大同花、同花顺、葫芦或四条，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 117,
+        "confidence": 0.64,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "nut_flush",
+      "title": "无对牌面的最大同花面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面无更大同花、同花顺、葫芦或四条，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 191,
+        "confidence": 0.67,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "nut_flush",
+      "title": "无对牌面的最大同花面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "call"
+      ],
+      "why": "此牌面无更大同花、同花顺、葫芦或四条，跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 103,
+        "confidence": 0.67,
+        "choice": "call"
+      }
+    },
+    {
+      "id": "royal_board",
+      "title": "公共牌皇家同花顺面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "所有合法对手底牌都平分；跟注收回 2000，弃牌仅剩 1900。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 152,
+        "confidence": 0.59,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "royal_board",
+      "title": "公共牌皇家同花顺面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "所有合法对手底牌都平分；跟注收回 2000，弃牌仅剩 1900。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 124,
+        "confidence": 0.62,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "royal_board",
+      "title": "公共牌皇家同花顺面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "所有合法对手底牌都平分；跟注收回 2000，弃牌仅剩 1900。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 202,
+        "confidence": 0.63,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "quads_board",
+      "title": "公共牌四条 A 加 K 面对全下",
+      "repeat": 0,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "双方必然使用公共牌平分；跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 296,
+        "confidence": 0.58,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "quads_board",
+      "title": "公共牌四条 A 加 K 面对全下",
+      "repeat": 1,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "双方必然使用公共牌平分；跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 308,
+        "confidence": 0.58,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "quads_board",
+      "title": "公共牌四条 A 加 K 面对全下",
+      "repeat": 2,
+      "ok": true,
+      "pass": false,
+      "expected": [
+        "call"
+      ],
+      "why": "双方必然使用公共牌平分；跟注严格优于弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 344,
+        "confidence": 0.52,
+        "choice": "fold"
+      }
+    },
+    {
+      "id": "free_check_trash",
+      "title": "河牌弱牌可免费过牌",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "免费过牌可保留所有后续选项；直接弃牌是弱劣势动作。此题仅判定是否无代价弃牌，不把所有下注判为好策略。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 297,
+        "confidence": 0.4,
+        "choice": "check"
+      }
+    },
+    {
+      "id": "free_check_trash",
+      "title": "河牌弱牌可免费过牌",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "免费过牌可保留所有后续选项；直接弃牌是弱劣势动作。此题仅判定是否无代价弃牌，不把所有下注判为好策略。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 277,
+        "confidence": 0.41,
+        "choice": "check"
+      }
+    },
+    {
+      "id": "free_check_trash",
+      "title": "河牌弱牌可免费过牌",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "免费过牌可保留所有后续选项；直接弃牌是弱劣势动作。此题仅判定是否无代价弃牌，不把所有下注判为好策略。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 184,
+        "confidence": 0.44,
+        "choice": "check"
+      }
+    },
+    {
+      "id": "free_check_pair",
+      "title": "河牌一对可免费过牌",
+      "repeat": 0,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "只检测免费弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 227,
+        "confidence": 0.37,
+        "choice": "check"
+      }
+    },
+    {
+      "id": "free_check_pair",
+      "title": "河牌一对可免费过牌",
+      "repeat": 1,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "只检测免费弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 282,
+        "confidence": 0.34,
+        "choice": "check"
+      }
+    },
+    {
+      "id": "free_check_pair",
+      "title": "河牌一对可免费过牌",
+      "repeat": 2,
+      "ok": true,
+      "pass": true,
+      "expected": [
+        "check",
+        "raise_min",
+        "raise_half_pot",
+        "raise_pot",
+        "all_in"
+      ],
+      "why": "只检测免费弃牌。",
+      "decision": {
+        "player": 0,
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "latencyMs": 200,
+        "confidence": 0.33,
+        "choice": "check"
+      }
+    }
+  ],
+  "completedHands": 710,
+  "completeGroups": 314,
+  "failedGroups": [
+    {
+      "id": "hu-random-84",
+      "condition": "hu_random",
+      "seed": 20261002,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    },
+    {
+      "id": "hu-random-83",
+      "condition": "hu_random",
+      "seed": 20261001,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    },
+    {
+      "id": "hu-random-81",
+      "condition": "hu_random",
+      "seed": 20260999,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    },
+    {
+      "id": "hu-random-85",
+      "condition": "hu_random",
+      "seed": 20261003,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    },
+    {
+      "id": "hu-random-86",
+      "condition": "hu_random",
+      "seed": 20261004,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    },
+    {
+      "id": "hu-random-87",
+      "condition": "hu_random",
+      "seed": 20261005,
+      "ok": false,
+      "error": "Jev 暂时无法连接或请求超时。本手已暂停，可以重试。"
+    }
+  ],
+  "completedTasks": 344,
+  "totalTasks": 344
+}
