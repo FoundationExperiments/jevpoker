@@ -14,7 +14,8 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "evaluate": "node scripts/evaluate.mjs",
-    "evaluate:audit": "node scripts/audit-evaluation.mjs"
+    "evaluate:audit": "node scripts/audit-evaluation.mjs",
+    "replay:build": "node scripts/build-replay.mjs"
   },
   "dependencies": {
     "react": "19.2.6",

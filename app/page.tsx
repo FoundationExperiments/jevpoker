@@ -203,7 +203,7 @@ export default function Home() {
         <Link className="brand" href="/" aria-label="Jev Poker 主页">
           <b>♠</b> jev<span>poker</span>
         </Link>
-        <span className="top-note">NO LIMIT TEXAS HOLD’EM</span>
+        <Link href="/review" className="top-note">逐手复盘 ↗</Link>
         <span className={`mode-pill ${displayedMode === 'jev' ? 'live' : ''}`}>
           {displayedMode === 'jev' ? 'JEV 决策模式' : '本地练习 · 非 Jev'}
         </span>
